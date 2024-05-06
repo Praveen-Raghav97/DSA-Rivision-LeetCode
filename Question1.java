@@ -15,6 +15,7 @@ public class Question1 {
     public static double medianSortedArray(int[] num1, int[] num2){
         
         int totalLength = num1.length + num2.length;
+       
         int margedArray [] = new int [totalLength];
 
         int i=0;
@@ -23,7 +24,7 @@ public class Question1 {
 
 
         while (i < num1.length && j<num2.length) {
-            if (num1[i] <=totalLength) {
+            if (num1[i] <=num2[j]) {
                 margedArray[k++] = num1[i++];
             }else{
                 margedArray[k++] = num2[j++];
@@ -37,20 +38,24 @@ public class Question1 {
         while (j< num2.length) {
             margedArray[k++] = num2[j++];
         }
-
+        
         //Check the median
 
-        if (totalLength %2 !=0) {
+        if (totalLength % 2 != 0) {
             return margedArray[totalLength / 2];
         }else{
-            int mid1 = totalLength /2-1;
+            int mid1 = totalLength / 2-1;
             int mid2 = totalLength /2;
-            return (margedArray[mid1]+ margedArray[mid2]);
+           
+
+            return (margedArray[mid1]+ margedArray[mid2]) /2.0;
         }
     }
     public static void main(String[] args) {
         int num1 [] = {1,3};
         int num2 [] = {2};
+
+       
 
         System.out.println("The median is " + medianSortedArray(num1, num2));
     }
